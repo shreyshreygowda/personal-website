@@ -82,13 +82,13 @@ export default function App() {
     >
       {/* Header */}
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 16 }}>
-      <Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold', textAlign: 'center' }}>
+      <Text style={{ color: 'white', fontSize: 50, fontWeight: 'bold', textAlign: 'center' }}>
         shreya <Text style={{ color: '#B39DDB' }}>is a</Text>
       </Text>
-      <Text style={{ color: 'white', fontSize: 32, textAlign: 'center', fontStyle: 'italic' }}>
+      <Text style={{ color: 'white', fontSize: 52, textAlign: 'center', fontStyle: 'italic' }}>
         entrepreneurial engineer
       </Text>
-      <Text style={{ color: '#B39DDB', fontSize: 30, textAlign: 'center', fontWeight: 'bold' }}>
+      <Text style={{ color: '#B39DDB', fontSize: 50, textAlign: 'center', fontWeight: 'bold' }}>
         scaling solutions
       </Text>
     </View>
@@ -115,18 +115,8 @@ export default function App() {
       </View>
     </View>
 
-      {/* Mission Section */}
-      <Text style={{ color: 'white', fontSize: 22, fontWeight: 'bold', marginTop: 20, paddingLeft: 400 }}>mission.</Text>
-      <Text style={{ color: 'white', marginBottom: 20, paddingTop: 50, paddingBottom: 100, paddingLeft: 400, paddingRight: 400}}>
-        I’m a Software Development Intern at Fem Entity, where I design mobile interfaces using React Native, Django, and TypeScript. I also work as a Data Analyst & Website Manager Team Lead Intern at STEM·E, leading technical training and data analysis initiatives. Currently, I research AI applications in FemTech at FemTech Future, focusing on breast cancer screening, drug development, and bias detection in healthcare datasets. 
-        {'\n\n'}
-        In the past, I collaborated on the Ethical AI Challenge at Ethicura AI, co-developing an API for deepfake detection that improved accuracy by 50%. I was a Machine Learning Research Intern at UCSF, where I analyze clinical data to explore the role of social determinants of health. So far, I've built and deployed research websites, led live coding sessions, and worked in agile teams to create user-friendly tech solutions. 
-        {'\n\n'}
-        In my free time, I flip thrifted dresses and tops, write poetry, and get creative with digital painting. I’m also passionate about collaging for bulletin boards, where I can mix art and organization. I’m always looking for new ways to experiment, create, and push boundaries in both tech and personal hobbies.
-        </Text>
-
       {/* Endeavors Grid */}
-      <Text style={{ color: 'white', fontSize: 22, fontWeight: 'bold' }}>my endeavors.</Text>
+        <Text style={{ color: 'white', fontSize: 50, fontWeight: 'bold', textAlign: 'center', paddingTop: 100, paddingBottom: 50, fontStyle: 'italic' }}>my endeavors.</Text>
       {[0, 1].map((rowIdx) => {
         const fadeAnim = animatedValues[rowIdx];
         return (

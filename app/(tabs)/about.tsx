@@ -20,14 +20,21 @@ const About = () => {
           <Text style={styles.subheading}>
             I’m an entrepreneurial engineer specializing in AI, full-stack development, and building scalable solutions.
           </Text>
-          <Text style={styles.paragraph}>
-            With a passion for tech that solves real-world problems, I’ve been fortunate to work with some incredible teams and clients.
-            From web apps to 3D visualizations, I bring ideas to life with precision and creativity.
-          </Text>
+    
+          {/* Mission Section */}
+          <Text style={{ color: 'white', fontSize: 22, fontWeight: 'bold', marginTop: 20, fontStyle: 'italic'}}>mission.</Text>
+          <Text style={{ color: 'white', marginBottom: 20, paddingTop: 10}}>
+            I’m a Software Development Intern at Fem Entity, where I design mobile interfaces using React Native, Django, and TypeScript. I also work as a Data Analyst & Website Manager Team Lead Intern at STEM·E, leading technical training and data analysis initiatives. Currently, I research AI applications in FemTech at FemTech Future, focusing on breast cancer screening, drug development, and bias detection in healthcare datasets. 
+            {'\n\n'}
+            In the past, I collaborated on the Ethical AI Challenge at Ethicura AI, co-developing an API for deepfake detection that improved accuracy by 50%. I was a Machine Learning Research Intern at UCSF, where I analyze clinical data to explore the role of social determinants of health. So far, I've built and deployed research websites, led live coding sessions, and worked in agile teams to create user-friendly tech solutions. 
+            {'\n\n'}
+            In my free time, I flip thrifted dresses and tops, write poetry, and get creative with digital painting. I’m also passionate about collaging for bulletin boards, where I can mix art and organization. I’m always looking for new ways to experiment, create, and push boundaries in both tech and personal hobbies.
+            </Text>
+    
 
           {/* Skills Section */}
           <View style={styles.skillsSection}>
-            <Text style={styles.heading}>Skills</Text>
+            <Text style={styles.heading}>skills.</Text>
             <View style={styles.skills}>
               <Text style={styles.skill}>JavaScript</Text>
               <Text style={styles.skill}>React Native</Text>
@@ -39,17 +46,17 @@ const About = () => {
 
           {/* Social Links */}
           <View style={styles.contactSection}>
-            <Text style={styles.heading}>Contact</Text>
+            <Text style={styles.heading}>contact.</Text>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => Linking.openURL('mailto:shreya@example.com')}
+              onPress={() => Linking.openURL('shreyanadagowda@gmail.com')}
             >
               <Text style={styles.buttonText}>Email Me</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={[styles.button, { backgroundColor: '#3b82f6' }]}
-              onPress={() => Linking.openURL('https://www.linkedin.com/in/shreya')}
+              onPress={() => Linking.openURL('https://www.linkedin.com/in/shreyanadagowda/')}
             >
               <Text style={styles.buttonText}>Connect on LinkedIn</Text>
             </TouchableOpacity>
@@ -116,6 +123,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
     marginBottom: 10,
+    fontStyle: 'italic'
   },
   skills: {
     flexDirection: 'row',
