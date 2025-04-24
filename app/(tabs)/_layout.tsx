@@ -1,45 +1,78 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import About from './about';
+import Experience from './experience';
+import Projects from './project';
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const TabLayout = () => {
+  const [activeTab, setActiveTab] = useState<'about' | 'experience' | 'projects'>('experience');
+
+  const renderTab = () => {
+    switch (activeTab) {
+      case 'about':
+        return <About />;
+      case 'experience':
+        return <Experience />;
+      case 'projects':
+        return <Projects />;
+      default:
+        return <Experience />;
+    }
+  };
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+    <View style={styles.container}>
+      {/* Top Nav */}
+      <View style={styles.topNav}>
+        {['about', 'experience', 'projects'].map((tab) => (
+          <TouchableOpacity key={tab} onPress={() => setActiveTab(tab as any)}>
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === tab && styles.activeTabText,
+              ]}>
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* Tab Content */}
+      <View style={styles.tabContent}>
+        {renderTab()}
+      </View>
+    </View>
   );
-}
+};
+
+export default TabLayout;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#0A0A23',
+    paddingTop: Platform.OS === 'ios' ? 60 : 40,
+  },
+  topNav: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingBottom: 20,
+    gap: 24,
+  },
+  tabText: {
+    fontSize: 16,
+    color: '#888',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+  },
+  activeTabText: {
+    color: '#fff',
+    borderBottomColor: '#B39DDB',
+    borderBottomWidth: 2,
+  },
+  tabContent: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
+});
