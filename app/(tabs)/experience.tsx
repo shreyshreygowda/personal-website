@@ -87,7 +87,7 @@ export default function App() {
       {/* HERO SECTION */}
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 16 }}>
         <Text style={{ color: 'white', fontSize: 50, fontWeight: 'bold', textAlign: 'center' }}>
-          shreya <Text style={{ color: '#B39DDB' }}>is a</Text>
+          shreya <Text style={{ color: '#B39DDB' }}>is an</Text>
         </Text>
         <Text style={{ color: 'white', fontSize: 52, textAlign: 'center', fontStyle: 'italic' }}>
           entrepreneurial engineer
