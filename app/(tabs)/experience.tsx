@@ -15,8 +15,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 const experienceData = [
   {
     title: 'Software Development Intern @ Fem Entity',
-    description: 'Worked on frontend development with React Native and integrated backend APIs.',
-    keywords: ['React Native', 'API', 'Frontend'],
+    description: 'Developed 6+ interactive mobile screens using React Native, Django, and TypeScript (TSX), supporting user onboarding and profile creation workflows. Created data collection features connecting users with certified practitioners across Canada, enhancing user engagement with reusable UI patterns, and Expo Router for smooth navigation.',
+    keywords: ['React Native', 'Django', 'TypeScript'],
   },
   {
     title: 'AI Researcher @ FemTech Future',
@@ -27,11 +27,11 @@ const experienceData = [
 
 const cardData = [
   {
-    image: 'https://images.unsplash.com/photo-1605902711622-cfb43c44367e',
-    title: '3D Solar System Explorer',
-    description: 'Interactive tour of planets using Three.js and WebGL.',
-    tags: ['Three.js', 'WebGL', '3D'],
-    link: 'https://example.com/solar-system',
+    image: '../../assets/images/fementity.png',
+    title: 'Software Development Intern @ FemEntity',
+    description: '\nDeveloped 6+ interactive mobile screens, supporting user onboarding and profile creation workflows. Created data collection features connecting users with certified practitioners across Canada, enhancing user engagement with reusable UI patterns, and Expo Router for smooth navigation.',
+    tags: ['React Native', 'Django', 'TypeScript'],
+    link: 'https://www.linkedin.com/company/fem-entity/posts/?feedView=all',
   },
   {
     image: 'https://images.unsplash.com/photo-1612831455546-bf26f9f5e18b',
