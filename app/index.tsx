@@ -8,7 +8,7 @@ export default function Index() {
   useEffect(() => {
     if (!rootNavigation?.key) return; // Wait for navigation to be ready
 
-    router.replace('/(tabs)/project'); // your default tab page
+    router.replace('/(tabs)/experience'); // your default tab page
   }, [rootNavigation]);
 
   return null;

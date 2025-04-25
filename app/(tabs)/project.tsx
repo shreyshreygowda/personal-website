@@ -16,11 +16,11 @@ const screenWidth = Dimensions.get('window').width;
 
 const projects = [
   {
-    title: '3D Solar System Planets',
+    title: 'AI Researcher @ Ethicura AI, The New York Academy of Sciences ',
     description:
-      'Explore a captivating 3D simulation of our solar system using Three.js.',
+      'Collaborated with an international team to complete the Ethical AI Challenge, co-developing Ethicura, an API extension for deepfake detection that integrates XceptionNet and MTCNN, improving detection accuracy by 50% over single-model baselines.',
     image: require('../../assets/images/profile.jpg'),
-    tags: ['Three.js', '3D', 'Interactive'],
+    tags: ['Grad-CAM visualizations', 'Ethical AI Challenge', 'Deepfake Detection'],
   },
   {
     title: 'Yoom - Video Conferencing App',
@@ -51,11 +51,10 @@ function ProjectCard({
   project: any;
   reverse?: boolean;
 }) {
-  // Animated value for scale
+  const isMobile = screenWidth < 768;
   const scale = useRef(new Animated.Value(0.8)).current;
   const [hovered, setHovered] = useState(false);
 
-  // Pop-up animation on mount
   useEffect(() => {
     Animated.spring(scale, {
       toValue: 1,
@@ -87,7 +86,8 @@ function ProjectCard({
     <Animated.View
       style={[
         styles.card,
-        reverse && styles.reverse,
+        reverse && !isMobile && styles.reverse,
+        isMobile && styles.cardMobile,
         {
           transform: [{ scale }],
           shadowColor: hovered ? '#a29bfe' : '#000',
@@ -95,12 +95,12 @@ function ProjectCard({
           elevation: hovered ? 12 : 8,
         },
       ]}
-      // @ts-ignore: web-only hover event
+      // @ts-ignore
       onMouseEnter={onEnter}
-      // @ts-ignore: web-only hover event
+      // @ts-ignore
       onMouseLeave={onLeave}
     >
-      <Image source={project.image} style={styles.image} />
+      <Image source={project.image} style={[styles.image, isMobile && styles.imageMobile]} />
       <View style={styles.textContainer}>
         <Text style={styles.title}>{project.title}</Text>
         <Text style={styles.description}>{project.description}</Text>
@@ -118,11 +118,7 @@ export default function ProjectScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {projects.map((p, i) => (
-        <ProjectCard
-          key={i}
-          project={p}
-          reverse={i % 2 === 1}
-        />
+        <ProjectCard key={i} project={p} reverse={i % 2 === 1} />
       ))}
     </ScrollView>
   );
@@ -143,12 +139,22 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 6 },
     shadowRadius: 10,
   },
+  cardMobile: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  },
   reverse: {
     flexDirection: 'row-reverse',
   },
   image: {
     width: screenWidth * 0.4,
     height: 150,
+    borderRadius: 12,
+  },
+  imageMobile: {
+    width: '100%',
+    height: 180,
+    marginBottom: 10,
     borderRadius: 12,
   },
   textContainer: {

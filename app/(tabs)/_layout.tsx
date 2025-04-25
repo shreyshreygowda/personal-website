@@ -6,7 +6,7 @@ import Experience from './experience';
 import Projects from './project';
 
 const TabLayout = () => {
-  const [activeTab, setActiveTab] = useState<'about' | 'experience' | 'projects'>('experience');
+  const [activeTab, setActiveTab] = useState<'about' | 'experience' | 'impact & recognition'>('experience');
 
   const renderTab = () => {
     switch (activeTab) {
@@ -14,7 +14,7 @@ const TabLayout = () => {
         return <About />;
       case 'experience':
         return <Experience />;
-      case 'projects':
+      case 'impact & recognition':
         return <Projects />;
       default:
         return <Experience />;
@@ -25,7 +25,7 @@ const TabLayout = () => {
     <View style={styles.container}>
       {/* Top Nav */}
       <View style={styles.topNav}>
-        {['about', 'experience', 'projects'].map((tab) => (
+        {['about', 'experience', 'impact & recognition'].map((tab) => (
           <TouchableOpacity key={tab} onPress={() => setActiveTab(tab as any)}>
             <Text
               style={[
