@@ -20,7 +20,7 @@ const experienceData = [
     keywords: ['React Native', 'Django', 'TypeScript'],
   },
   {
-    title: 'AI Researcher @ FemTech Future',
+    title: 'VC Researcher @ FemTech Future',
     description: 'Conducted research on AI applications in healthcare and built ML models.',
     keywords: ['Machine Learning', 'AI', 'Healthcare'],
   },
@@ -43,7 +43,7 @@ const cardData = [
   },
   {
     image: require('../../assets/images/femtech-future.png'),
-    title: 'AI Researcher @ FemTech Future Limited, Business Consulting and Services',
+    title: 'VC Researcher @ FemTech Future Limited, Business Consulting and Services',
     description: '\nResearch AI applications in FemTech, focusing on how company founders leverage artificial intelligence for breast cancer screening, drug development, and chatbot creation to support content strategy for LinkedIn posts and podcast features. Examined training datasets for AI models, identifying and synthesizing potential gender biases in data used for healthcare applications.',
     tags: ['AI', 'Health Informatics', 'Data Mining'],
     link: 'https://www.femtechfuture.com/',
