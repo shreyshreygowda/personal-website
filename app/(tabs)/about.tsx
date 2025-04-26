@@ -1,64 +1,144 @@
-import React from 'react';
-import { View, Text, StyleSheet, Linking, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Linking,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  Animated,
+} from 'react-native';
+import { Ionicons, Feather, FontAwesome } from '@expo/vector-icons';
+
+const interests = [
+  { label: 'Poetry', image: require('../../assets/images/profile.jpg') },
+  { label: 'Digital Art', image: require('../../assets/images/profile.jpg') },
+  { label: 'Milk Tea', image: require('../../assets/images/profile.jpg') },
+  { label: 'Thrifting', image: require('../../assets/images/profile.jpg') },
+  { label: 'Journaling', image: require('../../assets/images/profile.jpg') },
+];
+
+const photoWall = [
+  require('../../assets/images/profile.jpg'),
+  require('../../assets/images/profile.jpg'),
+  require('../../assets/images/profile.jpg'),
+  require('../../assets/images/profile.jpg'),
+];
 
 const About = () => {
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1200,
+      useNativeDriver: true,
+    }).start();
+  }, []);
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 60 }}>
-      {/* Side-by-side layout with Profile Image on the Left */}
-      <View style={styles.mainContent}>
-        {/* Profile Image Section (Left Side) */}
+      <Animated.View style={[styles.mainContent, { opacity: fadeAnim, transform: [{ scale: fadeAnim }] }]}>
+        {/* Profile Image */}
         <View style={styles.profileSection}>
           <Image
-            source={require('../../assets/images/profile.jpg')} // Add your profile image in assets
+            source={require('../../assets/images/profile.jpg')}
             style={styles.profileImage}
           />
         </View>
 
-        {/* Info Section (Right Side) */}
+        {/* Info Section */}
         <View style={styles.infoSection}>
           <Text style={styles.heroText}>Hey, I’m Shreya!</Text>
           <Text style={styles.subheading}>
             I’m an entrepreneurial engineer specializing in AI, full-stack development, and building scalable solutions.
           </Text>
-    
-          {/* Mission Section */}
-          <Text style={{ color: 'white', fontSize: 22, fontWeight: 'bold', marginTop: 20, fontStyle: 'italic'}}>mission.</Text>
-          <Text style={{ color: 'white', marginBottom: 20, paddingTop: 10}}>
-            I’m a Software Development Intern at Fem Entity, where I design mobile interfaces using React Native, Django, and TypeScript. I also work as a Data Analyst & Website Manager Team Lead Intern at STEM·E, leading technical training and data analysis initiatives. Currently, I research AI applications in FemTech at FemTech Future, focusing on breast cancer screening, drug development, and bias detection in healthcare datasets. 
-            {'\n\n'}
-            In the past, I collaborated on the Ethical AI Challenge at Ethicura AI, co-developing an API for deepfake detection that improved accuracy by 50%. I was a Machine Learning Research Intern at UCSF, where I analyze clinical data to explore the role of social determinants of health. So far, I've built and deployed research websites, led live coding sessions, and worked in agile teams to create user-friendly tech solutions. 
-            {'\n\n'}
-            In my free time, I flip thrifted dresses and tops, write poetry, and get creative with digital painting. I’m also passionate about collaging for bulletin boards, where I can mix art and organization. I’m always looking for new ways to experiment, create, and push boundaries in both tech and personal hobbies.
-            </Text>
-    
+          {/* ENTJ Button */}
+          <TouchableOpacity style={styles.entjButton}>
+            <Text style={styles.entjButtonText}>ENTJ - My MBTI </Text>
+          </TouchableOpacity>
 
-          {/* Skills Section */}
-          <View style={styles.skillsSection}>
-            <Text style={styles.heading}>skills.</Text>
-            <View style={styles.skills}>
-              <Text style={styles.skill}>JavaScript</Text>
-              <Text style={styles.skill}>React Native</Text>
-              <Text style={styles.skill}>AI Research</Text>
-              <Text style={styles.skill}>Web Design</Text>
-              <Text style={styles.skill}>Node.js</Text>
-            </View>
+
+          <Text style={styles.sectionTitle}>mission.</Text>
+          <Text style={styles.paragraph}>
+            I’m a Software Development Intern at Fem Entity...{'\n\n'}
+            In my free time, I flip thrifted dresses, write poetry, and get creative with digital painting. I love collaging and mixing art with organization.
+          </Text>
+
+          {/* Skills */}
+          <Text style={styles.sectionTitle}>skills.</Text>
+          <View style={styles.skills}>
+            {['JavaScript', 'React Native', 'AI Research', 'Web Design', 'Node.js'].map((skill, i) => (
+              <Text key={i} style={styles.skill}>{skill}</Text>
+            ))}
           </View>
 
           {/* Social Links */}
-          <View style={styles.contactSection}>
-            <Text style={styles.heading}>contact.</Text>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => Linking.openURL('shreyanadagowda@gmail.com')}
-            >
-              <Text style={styles.buttonText}>Email Me</Text>
+          <Text style={styles.sectionTitle}>connect.</Text>
+          <View style={styles.socialRow}>
+            <TouchableOpacity onPress={() => Linking.openURL('mailto:shreyanadagowda@gmail.com')}>
+              <Ionicons name="mail" size={28} color="#C0A4FD" style={styles.icon} />
             </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/shreyanadagowda/')}>
+              <Feather name="linkedin" size={28} color="#C0A4FD" style={styles.icon} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL('https://github.com/shreyshreygowda')}>
+              <Feather name="github" size={28} color="#C0A4FD" style={styles.icon} />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Animated.View>
 
-            <TouchableOpacity
-              style={[styles.button, { backgroundColor: '#3b82f6' }]}
-              onPress={() => Linking.openURL('https://www.linkedin.com/in/shreyanadagowda/')}
-            >
-              <Text style={styles.buttonText}>Connect on LinkedIn</Text>
+      {/* Photo Wall */}
+      <View style={{ marginTop: 60 }}>
+        <Text style={styles.sectionTitle}>memories so far.</Text>
+        <View style={styles.interestsGrid}>
+          {interests.map((item, i) => (
+            <View key={i} style={styles.interestCard}>
+              <Image source={item.image} style={styles.interestImage} />
+              <Text style={styles.interestLabel}>{item.label}</Text>
+            </View>
+          ))}
+        </View>
+      </View>
+
+      {/* Interests Grid */}
+      <View style={{ marginTop: 60 }}>
+        <Text style={styles.sectionTitle}>things I love.</Text>
+        <View style={styles.interestsGrid}>
+          {interests.map((item, i) => (
+            <View key={i} style={styles.interestCard}>
+              <Image source={item.image} style={styles.interestImage} />
+              <Text style={styles.interestLabel}>{item.label}</Text>
+            </View>
+          ))}
+        </View>
+      </View>
+
+      {/* Current Obsessions */}
+      <View style={{ marginTop: 60 }}>
+        <Text style={styles.sectionTitle}>current obsessions.</Text>
+        <View style={styles.currentObsessions}>
+          <View style={styles.obsessionCard}>
+            <FontAwesome name="tv" size={30} color="#C0A4FD" />
+            <Text style={styles.obsessionText}>Favorite Shows</Text>
+            <TouchableOpacity onPress={() => Linking.openURL('https://spotify.com')}>
+              <Text style={styles.spotifyLink}>Spotify Playlist</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.obsessionCard}>
+            <FontAwesome name="book" size={30} color="#C0A4FD" />
+            <Text style={styles.obsessionText}>Books I’m Reading</Text>
+            <TouchableOpacity onPress={() => Linking.openURL('https://spotify.com')}>
+              <Text style={styles.spotifyLink}>Spotify Playlist</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.obsessionCard}>
+            <FontAwesome name="music" size={30} color="#C0A4FD" />
+            <Text style={styles.obsessionText}>Music/Podcasts</Text>
+            <TouchableOpacity onPress={() => Linking.openURL('https://spotify.com')}>
+              <Text style={styles.spotifyLink}>Spotify Playlist</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -67,93 +147,168 @@ const About = () => {
   );
 };
 
-export default About;
+export default About;  // Default export
 
+export 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0A0A23',
+    backgroundColor: '#0E0A1F',
     paddingHorizontal: 24,
     paddingTop: 20,
   },
   mainContent: {
-    flexDirection: 'row', // Side-by-side layout (horizontal)
-    alignItems: 'center', // Vertically center the content
-    marginBottom: 24,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 20,
   },
   profileSection: {
-    flex: 1, // This makes sure the image gets 1/3 of the screen width
+    flex: 1,
     alignItems: 'center',
   },
   profileImage: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    borderWidth: 4,
-    borderColor: '#B39DDB',
+    width: 160,
+    height: 220,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: '#C0A4FD',
+    shadowColor: '#C0A4FD',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
   },
   infoSection: {
-    flex: 2, // Info section takes more width
-    marginLeft: 20, // Adding some space between the image and text
+    flex: 2,
   },
   heroText: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#fff',
-    textTransform: 'capitalize',
+    color: '#F0EFFF',
     marginBottom: 12,
   },
   subheading: {
     fontSize: 18,
-    color: '#c4b5fd',
-    marginBottom: 12,
+    color: '#C0A4FD',
+    marginBottom: 20,
     lineHeight: 26,
+  },
+  sectionTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#F0EFFF',
+    fontStyle: 'italic',
+    marginTop: 30,
+    marginBottom: 10,
   },
   paragraph: {
     fontSize: 16,
-    color: '#ccc',
-    marginBottom: 20,
+    color: '#B0AFC2',
     lineHeight: 24,
   },
-  skillsSection: {
-    marginBottom: 20,
+  entjButton: {
+    backgroundColor: '#8b5cf6',
+    borderColor: 'white',
+    borderWidth: 2,
+    borderEndEndRadius: 10,
+    paddingVertical: 12,
+    borderRadius: 10,
+    marginTop: 20,
+    alignItems: 'center',
+    width: 200
   },
-  heading: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 10,
+  entjButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+    alignItems: 'center',
     fontStyle: 'italic'
   },
   skills: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start',
-    gap: 16,
+    gap: 10,
   },
   skill: {
-    backgroundColor: '#B39DDB',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 25,
-    fontSize: 14,
+    backgroundColor: '#9A88F2',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderColor: 'white',
+    borderWidth: 2,
+    borderEndEndRadius: 10,
+    borderRadius: 18,
     color: '#fff',
+    fontSize: 14,
     marginBottom: 10,
   },
-  contactSection: {
-    marginTop: 20,
-    marginBottom: 40,
+  socialRow: {
+    flexDirection: 'row',
+    gap: 20,
+    marginTop: 10,
   },
-  button: {
-    backgroundColor: '#8b5cf6',
-    paddingVertical: 12,
+  icon: {
+    backgroundColor: '#1A1A33',
+    padding: 12,
+    borderRadius: 100,
+  },
+  photoWall: {
+    marginTop: 60,
+    height: 300,
+    position: 'relative',
+  },
+  wallImage: {
+    width: 100,
+    height: 100,
     borderRadius: 12,
-    marginBottom: 12,
-    alignItems: 'center',
+    position: 'absolute',
+    resizeMode: 'cover',
+    borderWidth: 2,
+    borderColor: '#9A88F2',
   },
-  buttonText: {
-    color: '#fff',
+  interestsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 12,
+    marginTop: 20,
+  },
+  interestCard: {
+    width: '30%',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  interestImage: {
+    width: 120,
+    height: 120,
+    borderRadius: 14,
+    marginBottom: 8,
+  },
+  interestLabel: {
+    color: '#F0EFFF',
+    fontSize: 14,
+  },
+  currentObsessions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 20,
+    marginTop: 20,
+  },
+  obsessionCard: {
+    width: '30%',
+    alignItems: 'center',
+    paddingVertical: 10,
+    backgroundColor: '#1A1A33',
+    borderRadius: 12,
+    justifyContent: 'center',
+  },
+  obsessionText: {
+    color: '#F0EFFF',
     fontSize: 16,
-    fontWeight: '600',
+    marginTop: 8,
+    textAlign: 'center',
+  },
+  spotifyLink: {
+    color: '#9A88F2',
+    fontSize: 14,
+    marginTop: 5,
   },
 });
