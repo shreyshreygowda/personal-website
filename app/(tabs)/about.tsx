@@ -17,6 +17,7 @@ const interests = [
   { label: 'Milk Tea', image: require('../../assets/images/profile.jpg') },
   { label: 'Thrifting', image: require('../../assets/images/profile.jpg') },
   { label: 'Journaling', image: require('../../assets/images/profile.jpg') },
+  { label: 'Journaling', image: require('../../assets/images/profile.jpg') },
 ];
 
 const photoWall = [
@@ -24,6 +25,9 @@ const photoWall = [
   require('../../assets/images/profile.jpg'),
   require('../../assets/images/profile.jpg'),
   require('../../assets/images/profile.jpg'),
+  require('../../assets/images/profile.jpg'),
+  require('../../assets/images/profile.jpg'),
+  
 ];
 
 const About = () => {
@@ -277,7 +281,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   interestImage: {
-    width: 120,
+    width: 200,
     height: 120,
     borderRadius: 14,
     marginBottom: 8,
