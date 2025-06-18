@@ -66,8 +66,7 @@ const About = () => {
 
           <Text style={styles.sectionTitle}>mission.</Text>
           <Text style={styles.paragraph}>
-            I’m a Software Development Intern at Fem Entity...{'\n\n'}
-            In my free time, I flip thrifted dresses, write poetry, and get creative with digital painting. I love collaging and mixing art with organization.
+            I’m passionate about building thoughtful, human-centered technology that bridges creativity and impact. Whether I’m coding as a software intern, flipping thrifted dresses, or collaging digital art, I’m always finding ways to combine design, innovation, and storytelling. My mission is to use my skills in computer science and my love for creative expression to make meaningful contributions in fields like medtech, finance, and social impact—where tech meets real-world change.
           </Text>
 
           {/* Skills */}
@@ -93,19 +92,7 @@ const About = () => {
           </View>
         </View>
       </Animated.View>
-
-      {/* Photo Wall */}
-      <View style={{ marginTop: 60 }}>
-        <Text style={styles.sectionTitle}>memories so far.</Text>
-        <View style={styles.interestsGrid}>
-          {interests.map((item, i) => (
-            <View key={i} style={styles.interestCard}>
-              <Image source={item.image} style={styles.interestImage} />
-              <Text style={styles.interestLabel}>{item.label}</Text>
-            </View>
-          ))}
-        </View>
-      </View>
+    
 
       {/* Interests Grid */}
       <View style={{ marginTop: 60 }}>
@@ -120,33 +107,6 @@ const About = () => {
         </View>
       </View>
 
-      {/* Current Obsessions */}
-      <View style={{ marginTop: 60 }}>
-        <Text style={styles.sectionTitle}>current obsessions.</Text>
-        <View style={styles.currentObsessions}>
-          <View style={styles.obsessionCard}>
-            <FontAwesome name="tv" size={30} color="#C0A4FD" />
-            <Text style={styles.obsessionText}>Favorite Shows</Text>
-            <TouchableOpacity onPress={() => Linking.openURL('https://spotify.com')}>
-              <Text style={styles.spotifyLink}>Spotify Playlist</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.obsessionCard}>
-            <FontAwesome name="book" size={30} color="#C0A4FD" />
-            <Text style={styles.obsessionText}>Books I’m Reading</Text>
-            <TouchableOpacity onPress={() => Linking.openURL('https://spotify.com')}>
-              <Text style={styles.spotifyLink}>Spotify Playlist</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.obsessionCard}>
-            <FontAwesome name="music" size={30} color="#C0A4FD" />
-            <Text style={styles.obsessionText}>Music/Podcasts</Text>
-            <TouchableOpacity onPress={() => Linking.openURL('https://spotify.com')}>
-              <Text style={styles.spotifyLink}>Spotify Playlist</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
     </ScrollView>
   );
 };
